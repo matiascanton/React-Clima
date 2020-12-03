@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header'
 import Form from './components/Form'
 import Clima from './components/Clima'
@@ -15,12 +15,12 @@ function App() {
   const [result, saveResult] = useState({});
   const [error, saveError] = useState(false);
 
-  const {city, country} = search;
+  const { city, country } = search;
 
-  useEffect( () => {
+  useEffect(() => {
     const consultApi = async () => {
 
-      if(consult){
+      if (consult) {
         const appId = 'c12e3b2d99361885146b1ecc4d395072';
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&lang=es&APPID=${appId}&units=metric`;
         const response = await fetch(url);
@@ -29,9 +29,9 @@ function App() {
         saveResult(result);
         saveConsult(false);
 
-        if(result.cod === "404"){
+        if (result.cod === "404") {
           saveError(true);
-        }else{
+        } else {
           saveError(false);
         }
       }
@@ -40,14 +40,11 @@ function App() {
   }, [consult]);
 
   let component;
-  if(error) {
+  if (error) {
     component = <Error message="No hay resultados" />
-  }else{
-    component = <Clima result = {result}/>
+  } else {
+    component = <Clima result={result} />
   }
-  
-
-  
 
   return (
 
