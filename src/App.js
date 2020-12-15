@@ -55,7 +55,7 @@ function App() {
       <div className="contenedor-form">
         <div className="container">
           <div className="row">
-            <div className="col m6 s12">
+            <div className="col m8 offset-m2 s12">
               <Form
                 search={search}
                 saveSearch={saveSearch}
@@ -63,7 +63,7 @@ function App() {
 
               />
             </div>
-            <div className="col m6 s12">
+            <div className="col m8 offset-m2 s12">
               <Clima
                 result={result}
               />

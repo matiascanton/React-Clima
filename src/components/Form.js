@@ -1,28 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Error from './Error'
 import PropTypes from 'prop-types';
 
-const Form = ({search, saveSearch, saveConsult}) => {
+const Form = ({ search, saveSearch, saveConsult }) => {
 
     const [error, saveError] = useState(false)
 
     // Extraeer ciudad y pais
-    const {city, country} = search;
+    const { city, country } = search;
 
     // Funcion para colocar los elementos en el State
-    const handleChange = e =>{
+    const handleChange = e => {
         // actualizar el State
         saveSearch({
             ...search,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
     // Cuando se hace el submit
-    const handleSubmit = e =>{
+    const handleSubmit = e => {
         e.preventDefault();
 
         // Validacion
-        if(city.trim() === '' || country.trim() === ''){
+        if (city.trim() === '' || country.trim() === '') {
             saveError(true);
             return;
         }
@@ -36,7 +36,7 @@ const Form = ({search, saveSearch, saveConsult}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            {error ? <Error message="Ambos campos son obligatorios"/> : null}
+            {error ? <Error message="Ambos campos son obligatorios" /> : null}
             <div className="input-field col s12">
                 <input
                     type="text"
@@ -45,7 +45,7 @@ const Form = ({search, saveSearch, saveConsult}) => {
                     value={city}
                     onChange={handleChange}
                 />
-                <label htmlFor="city"> City: </label>
+                <label htmlFor="city"> Ciudad: </label>
             </div>
             <div className="input-field col s12">
                 <select
@@ -54,7 +54,7 @@ const Form = ({search, saveSearch, saveConsult}) => {
                     value={country}
                     onChange={handleChange}
                 >
-                    <option value=""> Select a Country</option>
+                    <option value=""> Seleccione un Pais</option>
                     <option value="US">Estados Unidos</option>
                     <option value="MX">México</option>
                     <option value="AR">Argentina</option>
@@ -63,7 +63,7 @@ const Form = ({search, saveSearch, saveConsult}) => {
                     <option value="ES">España</option>
                     <option value="PE">Perú</option>
                 </select>
-                <label htmlFor="country">Country: </label>
+                <label htmlFor="country">Pais: </label>
             </div>
 
             <div className="input-field col s12">
@@ -74,10 +74,10 @@ const Form = ({search, saveSearch, saveConsult}) => {
                 />
             </div>
         </form>
-         
+
     );
 }
-  
+
 Form.propTypes = {
     search: PropTypes.object.isRequired,
     saveSearch: PropTypes.func.isRequired,
@@ -85,4 +85,3 @@ Form.propTypes = {
 
 }
 export default Form;
-  
